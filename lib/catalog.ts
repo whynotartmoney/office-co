@@ -11,19 +11,19 @@ export const tools: readonly Tool[] = [
   {
     slug: "word-counter",
     tier: "free",
-    name: { en: "Word counter", zh: "字数统计" },
+    name: { en: "Word counter", zh: "字數統計" },
     blurb: {
       en: "Words, characters, lines, and reading time.",
-      zh: "词数、字符、行数与阅读时间。",
+      zh: "詞數、字元、行數與閱讀時間。",
     },
   },
   {
     slug: "case-converter",
     tier: "free",
-    name: { en: "Case converter", zh: "大小写转换" },
+    name: { en: "Case converter", zh: "大小寫轉換" },
     blurb: {
       en: "UPPER, lower, Title, Sentence, snake, camel, and kebab.",
-      zh: "大写、小写、标题、句首、蛇形、驼峰与短横线。",
+      zh: "大寫、小寫、標題、句首、蛇形、駝峰與短橫線。",
     },
   },
   {
@@ -32,16 +32,16 @@ export const tools: readonly Tool[] = [
     name: { en: "UUID v4", zh: "UUID v4" },
     blurb: {
       en: "Generate 1–50 version-4 UUIDs and copy them.",
-      zh: "生成 1–50 个 UUID v4，并可复制。",
+      zh: "產生 1–50 個 UUID v4，並可複製。",
     },
   },
   {
     slug: "timestamp",
     tier: "free",
-    name: { en: "Timestamp", zh: "时间戳" },
+    name: { en: "Timestamp", zh: "時間戳" },
     blurb: {
       en: "Unix time to local and UTC ISO, and back.",
-      zh: "Unix 时间与本地 / UTC ISO 互转。",
+      zh: "Unix 時間與本機 / UTC ISO 互轉。",
     },
   },
   {
@@ -50,49 +50,49 @@ export const tools: readonly Tool[] = [
     name: { en: "Percentage", zh: "百分比" },
     blurb: {
       en: "Percent of a value, what percent, and percent change.",
-      zh: "求占比、百分比与增减幅度。",
+      zh: "求佔比、百分比與增減幅度。",
     },
   },
   {
     slug: "contrast",
     tier: "free",
-    name: { en: "Color contrast", zh: "颜色对比度" },
+    name: { en: "Color contrast", zh: "顏色對比度" },
     blurb: {
       en: "Two hex colors, scored for WCAG AA and AAA.",
-      zh: "两种十六进制颜色，检测 WCAG AA / AAA。",
+      zh: "兩種十六進位顏色，檢測 WCAG AA / AAA。",
     },
   },
   {
     slug: "base64",
     tier: "free",
     name: { en: "Base64", zh: "Base64" },
-    blurb: { en: "Encode and decode UTF-8 text.", zh: "编码与解码 UTF-8 文本。" },
+    blurb: { en: "Encode and decode UTF-8 text.", zh: "編碼與解碼 UTF-8 文字。" },
   },
   {
     slug: "lorem",
     tier: "free",
-    name: { en: "Lorem ipsum", zh: "占位文本" },
+    name: { en: "Lorem ipsum", zh: "佔位文字" },
     blurb: {
       en: "Placeholder paragraphs or a set word count.",
-      zh: "按段落或词数生成占位文本。",
+      zh: "按段落或詞數產生佔位文字。",
     },
   },
   {
     slug: "cn-amount",
     tier: "free",
-    name: { en: "Chinese amount", zh: "大写金额" },
+    name: { en: "Chinese amount", zh: "大寫金額" },
     blurb: {
       en: "Numbers to Traditional Chinese invoice amounts.",
-      zh: "阿拉伯数字转为繁体支票大写金额。",
+      zh: "阿拉伯數字轉為繁體支票大寫金額。",
     },
   },
   {
     slug: "text-search",
     tier: "free",
-    name: { en: "Text search", zh: "文字搜索" },
+    name: { en: "Text search", zh: "文字搜尋" },
     blurb: {
       en: "Highlight every match in a long paste, in a color you pick.",
-      zh: "在长文本里高亮全部匹配，并可自选颜色。",
+      zh: "在長文字裡高亮全部相符，並可自選顏色。",
     },
   },
   {
@@ -101,7 +101,7 @@ export const tools: readonly Tool[] = [
     name: { en: "JSON / YAML", zh: "JSON / YAML" },
     blurb: {
       en: "Pretty-print, minify, validate, and convert.",
-      zh: "美化、压缩、校验与互转。",
+      zh: "美化、壓縮、驗證與互轉。",
     },
   },
   {
@@ -110,55 +110,55 @@ export const tools: readonly Tool[] = [
     name: { en: "CSV ↔ JSON", zh: "CSV ↔ JSON" },
     blurb: {
       en: "Spreadsheets to JSON arrays, and back.",
-      zh: "表格与 JSON 数组互转。",
+      zh: "表格與 JSON 陣列互轉。",
     },
   },
   {
     slug: "regex",
     tier: "pro",
-    name: { en: "Regex tester", zh: "正则测试" },
+    name: { en: "Regex tester", zh: "正則測試" },
     blurb: {
       en: "Pattern, flags, matches, and replace.",
-      zh: "模式、标志、匹配与替换。",
+      zh: "模式、旗標、相符與替換。",
     },
   },
   {
     slug: "diff",
     tier: "pro",
-    name: { en: "Text diff", zh: "文本对比" },
+    name: { en: "Text diff", zh: "文字差異" },
     blurb: {
       en: "Side-by-side or unified difference.",
-      zh: "并排或统一格式的差异。",
+      zh: "並排或統一格式的差異。",
     },
   },
   {
     slug: "qr",
     tier: "pro",
-    name: { en: "QR code", zh: "二维码" },
-    blurb: { en: "Text or a URL, downloaded as PNG.", zh: "文本或网址，下载 PNG。" },
+    name: { en: "QR code", zh: "QR 碼" },
+    blurb: { en: "Text or a URL, downloaded as PNG.", zh: "文字或網址，下載 PNG。" },
   },
   {
     slug: "password",
     tier: "pro",
-    name: { en: "Password", zh: "密码生成" },
+    name: { en: "Password", zh: "密碼產生" },
     blurb: {
       en: "Length and character sets, generated locally.",
-      zh: "选择长度与字符集，在本地生成。",
+      zh: "選擇長度與字元集，在本機產生。",
     },
   },
   {
     slug: "markdown",
     tier: "pro",
     name: { en: "Markdown", zh: "Markdown" },
-    blurb: { en: "Live preview, and copy the HTML.", zh: "实时预览，并复制 HTML。" },
+    blurb: { en: "Live preview, and copy the HTML.", zh: "即時預覽，並複製 HTML。" },
   },
   {
     slug: "units",
     tier: "pro",
-    name: { en: "Unit converter", zh: "单位换算" },
+    name: { en: "Unit converter", zh: "單位換算" },
     blurb: {
       en: "Length, weight, temperature, and area.",
-      zh: "长度、重量、温度与面积。",
+      zh: "長度、重量、溫度與面積。",
     },
   },
 ] as const;

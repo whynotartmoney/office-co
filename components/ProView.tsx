@@ -38,7 +38,9 @@ export function ProView() {
 
   return (
     <div className="page narrow">
-      <p className="kicker">Pro</p>
+      <p className="kicker">
+        <Tx id="filter.pro" />
+      </p>
       <h1>
         <Tx id="pro.title" />
       </h1>

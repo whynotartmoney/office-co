@@ -10,7 +10,8 @@
   --accent-ink: #fff8f6;
   --good: #146b34;
   --bad: #b43322;
-  --wash: rgba(255, 255, 255, 0.9);
+  --wash: rgba(255, 255, 255, 0.55);
+  --hatch: rgba(58, 58, 52, 0.16);
   color-scheme: light;
 }
 
@@ -25,7 +26,8 @@
   --accent-ink: #fff7f4;
   --good: #1b5c34;
   --bad: #9d2b1b;
-  --wash: rgba(255, 255, 255, 0.55);
+  --wash: rgba(255, 255, 255, 0.45);
+  --hatch: rgba(36, 36, 32, 0.16);
   color-scheme: light;
 }
 
@@ -41,6 +43,7 @@
   --good: #8ee0ae;
   --bad: #ff8d7a;
   --wash: rgba(255, 255, 255, 0.04);
+  --hatch: rgba(255, 255, 255, 0.055);
   color-scheme: dark;
 }
 
@@ -50,7 +53,11 @@ body {
   margin: 0;
   min-height: 100%;
   color: var(--ink);
-  background: var(--bg);
+  background:
+    radial-gradient(900px 420px at 0% -10%, var(--wash), transparent 55%),
+    linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.04)),
+    repeating-linear-gradient(-18deg, transparent 0 9px, var(--hatch) 9px 10px),
+    var(--bg);
   font-family: var(--font-sans), sans-serif;
   font-size: 16px;
   line-height: 1.45;
@@ -65,14 +72,6 @@ body::after {
   opacity: 0.18;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
-}
-[data-theme="silver"] body,
-[data-theme="black"] body {
-  background:
-    radial-gradient(900px 420px at 0% -10%, var(--wash), transparent 55%),
-    linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.04)),
-    repeating-linear-gradient(-18deg, transparent, transparent 11px, rgba(0, 0, 0, 0.025) 12px),
-    var(--bg);
 }
 [data-theme="white"] body::after { opacity: 0; }
 [data-theme="black"] body::after { mix-blend-mode: soft-light; opacity: 0.28; }
@@ -497,7 +496,7 @@ input[type="color"] { width: 48px; height: 48px; padding: 0; border: 1px solid v
 .tool-pending { min-height: 180px; border: 1px dashed var(--line); background: color-mix(in srgb, var(--surface) 70%, transparent); }
 .amount-out {
   margin: 0;
-  font-family: var(--font-tc), "Noto Sans TC", sans-serif;
+  font-family: var(--font-sans), sans-serif;
   font-weight: 400;
   font-size: clamp(1.35rem, 3vw, 2rem);
   line-height: 1.4;
@@ -568,57 +567,3 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
   * { scroll-behavior: auto !important; transition: none !important; }
 }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
-html[lang="zh"] body {
-  font-family: var(--font-tc), "Noto Sans TC", sans-serif;
-  font-weight: 400;
-}
-html[lang="zh"] :is(.wordmark, .wordmark-hero, .hero-count) {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 400;
-}
-html[lang="zh"] :is(.tool-name, .menu-tool-name) {
-  font-family: var(--font-tc), "Noto Sans TC", sans-serif;
-  font-weight: 700;
-}
-html[lang="zh"] :is(
-  h1:not(.tool-name),
-  h2:not(.tool-name),
-  .menu-nav a,
-  .kicker,
-  .lede,
-  .hint,
-  .field-label,
-  .case-label,
-  .back,
-  .badge,
-  .lock-mark,
-  .card-index,
-  .chip-count,
-  .menu-index,
-  .menu-count,
-  button,
-  .btn,
-  .bmc,
-  .text-btn,
-  .chip
-) {
-  font-family: var(--font-tc), "Noto Sans TC", sans-serif;
-  font-weight: 400;
-}
-html[lang="zh"] :is(
-  input,
-  textarea,
-  select,
-  code,
-  pre,
-  .password,
-  .diff-unified,
-  .diff-row pre
-) {
-  font-family: var(--font-mono), var(--font-tc), "Noto Sans TC", ui-monospace, monospace;
-}
-html[lang="zh"] .field .search-editor .search-back,
-html[lang="zh"] .field .search-editor textarea {
-  font-family: var(--font-mono), var(--font-tc), "Noto Sans TC", ui-monospace, monospace;
-}
