@@ -3,6 +3,7 @@
 import { createContext, useCallback, useContext, useLayoutEffect, useMemo, useSyncExternalStore, type ReactNode } from "react";
 import {
   clearPro,
+  DEFAULT_THEME,
   nextTheme,
   readLang,
   readPro,
@@ -40,7 +41,7 @@ function serverLang(): Lang {
 }
 
 function serverTheme(): Theme {
-  return "silver";
+  return DEFAULT_THEME;
 }
 
 function serverOff(): boolean {

@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
+import { chineseAmount } from "./amount.ts";
 import { tools } from "./catalog.ts";
+import { highlightSpans, matchCount } from "./highlight.ts";
 import { gradeContrast, parseHex } from "./contrast.ts";
 import { jsonToYaml, prettyJson, yamlToJson } from "./convert.ts";
 import { csvToJson, jsonToCsv, parseCsv } from "./csv.ts";
@@ -10,18 +12,20 @@ import { loremParagraphs, loremWords } from "./lorem.ts";
 import { generatePassword } from "./password.ts";
 import { adjustByPercent, percentChange, percentOf, whatPercent } from "./percent.ts";
 import { isValidProPayload } from "./pro.ts";
-import { isProValue, nextTheme } from "./storage.ts";
+import { DEFAULT_THEME, isProValue, nextTheme } from "./storage.ts";
 import { runRegex } from "./regex.ts";
 import { decodeBase64, encodeBase64, textStats, toCamel, toKebab, toSentence, toSnake, toTitle } from "./text.ts";
 import { formatOffset, interpretUnix, parseIso } from "./time.ts";
 import { convertUnits } from "./units.ts";
 
 describe("catalog", () => {
-  it("has eight free and eight pro tools with unique slugs", () => {
-    assert.equal(tools.length, 16);
-    assert.equal(tools.filter((tool) => tool.tier === "free").length, 8);
+  it("has ten free and eight pro tools with unique slugs", () => {
+    assert.equal(tools.length, 18);
+    assert.equal(tools.filter((tool) => tool.tier === "free").length, 10);
     assert.equal(tools.filter((tool) => tool.tier === "pro").length, 8);
-    assert.equal(new Set(tools.map((tool) => tool.slug)).size, 16);
+    assert.equal(new Set(tools.map((tool) => tool.slug)).size, 18);
+    assert.equal(tools.find((tool) => tool.slug === "cn-amount")?.tier, "free");
+    assert.equal(tools.find((tool) => tool.slug === "text-search")?.tier, "free");
   });
 });
 
@@ -46,10 +50,11 @@ describe("pro flag", () => {
     assert.equal(isValidProPayload({ valid: false }), false);
     assert.equal(isValidProPayload({ valid: "true" }), false);
     assert.equal(isValidProPayload(null), false);
+    assert.equal(DEFAULT_THEME, "white");
     assert.equal(nextTheme("white"), "silver");
     assert.equal(nextTheme("silver"), "black");
     assert.equal(nextTheme("black"), "white");
-    assert.equal(nextTheme(null), "black");
+    assert.equal(nextTheme(null), "silver");
   });
 });
 
@@ -126,6 +131,50 @@ describe("documents", () => {
     assert.equal(result.matches.length, 1);
     assert.equal(result.replaced, "bXc");
     assert.throws(() => runRegex("", "", "a", ""));
+  });
+});
+
+function amountText(input: string): string {
+  const result = chineseAmount(input);
+  assert.equal(result.ok, true);
+  if (!result.ok) return "";
+  return result.text;
+}
+
+describe("chinese amount", () => {
+  it("writes invoice uppercase, including the sample 12345.67", () => {
+    assert.equal(amountText("12345.67"), "壹萬貳仟叁佰肆拾伍元陸角柒分");
+    assert.equal(amountText("12,345.67"), "壹萬貳仟叁佰肆拾伍元陸角柒分");
+    assert.equal(amountText("0"), "零元整");
+    assert.equal(amountText("10"), "壹拾元整");
+    assert.equal(amountText("101"), "壹佰零壹元整");
+    assert.equal(amountText("1001"), "壹仟零壹元整");
+    assert.equal(amountText("1010"), "壹仟零壹拾元整");
+    assert.equal(amountText("10001"), "壹萬零壹元整");
+    assert.equal(amountText("100001000"), "壹億零壹仟元整");
+    assert.equal(amountText("1.5"), "壹元伍角整");
+    assert.equal(amountText("1.05"), "壹元零伍分");
+    assert.equal(amountText("0.05"), "零元零伍分");
+    assert.equal(amountText("-8"), "負捌元整");
+    assert.equal(chineseAmount("").ok, false);
+    assert.equal(chineseAmount("12.345").ok, false);
+    assert.equal(chineseAmount("nope").ok, false);
+    assert.equal(chineseAmount(`1${"0".repeat(16)}`).ok, false);
+  });
+});
+
+describe("text search", () => {
+  it("highlights every match and can stay case sensitive", () => {
+    const loose = highlightSpans("Aa aa AA", "aa", false);
+    assert.equal(matchCount(loose), 3);
+    assert.deepEqual(
+      loose.filter((span) => span.match).map((span) => span.text),
+      ["Aa", "aa", "AA"],
+    );
+    const strict = highlightSpans("Aa aa AA", "aa", true);
+    assert.equal(matchCount(strict), 1);
+    assert.equal(highlightSpans("a.b", ".", false).some((span) => span.match && span.text === "."), true);
+    assert.equal(matchCount(highlightSpans("desk", "", false)), 0);
   });
 });
 
