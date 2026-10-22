@@ -48,7 +48,7 @@ export function HomeView() {
             <Tx id="kicker" />
           </p>
           <span className="hero-count" aria-hidden="true">
-            16
+            {tools.length}
           </span>
         </div>
         <h1 className="wordmark-hero">office-co</h1>

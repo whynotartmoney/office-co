@@ -7,20 +7,22 @@ export const THEME_ORDER = ["white", "silver", "black"] as const;
 export type Theme = (typeof THEME_ORDER)[number];
 export type Lang = "en" | "zh";
 
+export const DEFAULT_THEME: Theme = "white";
+
 export function isProValue(value: string | null): boolean {
   return value !== null && value !== "" && value !== "0" && value !== "false";
 }
 
 export function nextTheme(current: string | null): Theme {
   const index = THEME_ORDER.indexOf(current as Theme);
-  const base = index < 0 ? THEME_ORDER.indexOf("silver") : index;
+  const base = index < 0 ? THEME_ORDER.indexOf(DEFAULT_THEME) : index;
   return THEME_ORDER[(base + 1) % THEME_ORDER.length];
 }
 
 export function readTheme(): Theme {
-  if (typeof window === "undefined") return "silver";
+  if (typeof window === "undefined") return DEFAULT_THEME;
   const value = localStorage.getItem(THEME_KEY);
-  return value === "white" || value === "silver" || value === "black" ? value : "silver";
+  return value === "white" || value === "silver" || value === "black" ? value : DEFAULT_THEME;
 }
 
 export function readLang(): Lang {

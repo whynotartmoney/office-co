@@ -78,6 +78,24 @@ export const tools: readonly Tool[] = [
     },
   },
   {
+    slug: "cn-amount",
+    tier: "free",
+    name: { en: "Chinese amount", zh: "大写金额" },
+    blurb: {
+      en: "Numbers to Traditional Chinese invoice amounts.",
+      zh: "阿拉伯数字转为繁体支票大写金额。",
+    },
+  },
+  {
+    slug: "text-search",
+    tier: "free",
+    name: { en: "Text search", zh: "文字搜索" },
+    blurb: {
+      en: "Highlight every match in a long paste, in a color you pick.",
+      zh: "在长文本里高亮全部匹配，并可自选颜色。",
+    },
+  },
+  {
     slug: "json-yaml",
     tier: "pro",
     name: { en: "JSON / YAML", zh: "JSON / YAML" },

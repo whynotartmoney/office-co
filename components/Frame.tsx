@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { useApp } from "@/components/Providers";
-import { Tx } from "@/components/Tx";
+import { Bi, Tx } from "@/components/Tx";
+import { tools } from "@/lib/catalog";
 
 const BMC = "https://buymeacoffee.com/whynotartmoney";
 
@@ -13,6 +14,7 @@ export function Frame({ children }: { children: ReactNode }) {
   const menuButton = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLDivElement>(null);
   const titleId = useId();
+  const toolsLabel = useId();
 
   useEffect(() => {
     if (!open) return;
@@ -101,10 +103,10 @@ export function Frame({ children }: { children: ReactNode }) {
       {open ? (
         <>
           <button type="button" className="scrim" onClick={() => setOpen(false)}>
-          <span className="sr">
-            <Tx id="close" />
-          </span>
-        </button>
+            <span className="sr">
+              <Tx id="close" />
+            </span>
+          </button>
           <div
             ref={panel}
             id="site-menu"
@@ -131,6 +133,36 @@ export function Frame({ children }: { children: ReactNode }) {
               <Link href="/about" onClick={() => setOpen(false)}>
                 <Tx id="about" />
               </Link>
+            </nav>
+            <p className="kicker" id={toolsLabel}>
+              <Tx id="menu.tools" />
+              <span className="menu-count">{tools.length}</span>
+            </p>
+            <nav className="menu-tools" aria-labelledby={toolsLabel}>
+              <ul>
+                {tools.map((tool, index) => (
+                  <li key={tool.slug}>
+                    <Link
+                      href={`/t/${tool.slug}`}
+                      className={`menu-tool tier-${tool.tier}`}
+                      onClick={() => setOpen(false)}
+                    >
+                      <span className="menu-index">{String(index + 1).padStart(2, "0")}</span>
+                      <span className="menu-tool-name">
+                        <Bi en={tool.name.en} zh={tool.name.zh} />
+                      </span>
+                      {tool.tier === "pro" ? (
+                        <span className="menu-tool-marks">
+                          <span className="badge pro">Pro</span>
+                          <span className="lock-mark">
+                            <Tx id="lock" />
+                          </span>
+                        </span>
+                      ) : null}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </nav>
             <a className="bmc" href={BMC} target="_blank" rel="noreferrer">
               <Tx id="bmc" />

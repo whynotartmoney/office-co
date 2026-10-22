@@ -12,7 +12,7 @@ https://buymeacoffee.com/whynotartmoney
 
 ## What it is
 
-Sixteen desk tools that run in the browser. Eight are free. Eight are Pro and stay locked until a license key is accepted.
+Eighteen desk tools that run in the browser. Ten are free. Eight are Pro and stay locked until a license key is accepted.
 
 Text typed into a tool stays on the device. The only network request is the Pro license check.
 
@@ -28,7 +28,7 @@ Do not commit license keys.
 
 ## Tools
 
-Free: word counter, case converter, UUID v4, timestamp, percentage, color contrast, Base64, lorem ipsum.
+Free: word counter, case converter, UUID v4, timestamp, percentage, color contrast, Base64, lorem ipsum, Chinese uppercase amount, text search.
 
 Pro: JSON/YAML, CSV ↔ JSON, regex tester, text diff, QR code, password generator, Markdown preview, unit converter (length, weight, temperature, area).
 
@@ -43,7 +43,7 @@ npm test
 npm run build
 ```
 
-The dev server runs at http://localhost:3000. Theme, language, and the last opened tool are stored in `localStorage`. The default theme is light silver-gray. The default language is English.
+The dev server runs at http://localhost:3000. Theme, language, and the last opened tool are stored in `localStorage`. The default theme is white. The theme control cycles white, light silver-gray, and black. The default language is English. Chinese body and interface text uses Noto Sans TC.
 
 ## Deploy
 
