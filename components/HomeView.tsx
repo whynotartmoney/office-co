@@ -61,7 +61,7 @@ export function HomeView() {
           <span>
             <Tx id="resume" />
           </span>
-          <Link href={`/t/${resume.slug}`}>
+          <Link href={`/t/${resume.slug}`} className="tool-name">
             <Bi en={resume.name.en} zh={resume.name.zh} />
           </Link>
         </p>
