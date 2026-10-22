@@ -77,7 +77,7 @@ export function ToolScreen({ slug }: { slug: string }) {
           <Tx id="back" />
         </Link>
         <p className="card-index">{String(toolIndex(tool.slug) + 1).padStart(2, "0")}</p>
-        <h1>
+        <h1 className="tool-name">
           <Bi en={tool.name.en} zh={tool.name.zh} />
         </h1>
         <p className="lede">

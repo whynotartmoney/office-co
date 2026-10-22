@@ -498,6 +498,7 @@ input[type="color"] { width: 48px; height: 48px; padding: 0; border: 1px solid v
 .amount-out {
   margin: 0;
   font-family: var(--font-tc), "Noto Sans TC", sans-serif;
+  font-weight: 400;
   font-size: clamp(1.35rem, 3vw, 2rem);
   line-height: 1.4;
   overflow-wrap: anywhere;
@@ -570,22 +571,23 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 
 html[lang="zh"] body {
   font-family: var(--font-tc), "Noto Sans TC", sans-serif;
+  font-weight: 400;
+}
+html[lang="zh"] :is(.wordmark, .wordmark-hero, .hero-count) {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 400;
+}
+html[lang="zh"] :is(.tool-name, .menu-tool-name) {
+  font-family: var(--font-tc), "Noto Sans TC", sans-serif;
+  font-weight: 700;
 }
 html[lang="zh"] :is(
-  h1,
-  h2,
-  .wordmark,
-  .wordmark-hero,
+  h1:not(.tool-name),
+  h2:not(.tool-name),
   .menu-nav a,
-  .hero-count,
-  .stats dd,
-  .result,
-  .swatches p
-) {
-  font-family: var(--font-display), var(--font-tc), "Noto Sans TC", sans-serif;
-}
-html[lang="zh"] :is(
   .kicker,
+  .lede,
+  .hint,
   .field-label,
   .case-label,
   .back,
@@ -594,12 +596,15 @@ html[lang="zh"] :is(
   .card-index,
   .chip-count,
   .menu-index,
+  .menu-count,
   button,
   .btn,
+  .bmc,
   .text-btn,
   .chip
 ) {
   font-family: var(--font-tc), "Noto Sans TC", sans-serif;
+  font-weight: 400;
 }
 html[lang="zh"] :is(
   input,

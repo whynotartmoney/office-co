@@ -148,7 +148,7 @@ export function Frame({ children }: { children: ReactNode }) {
                       onClick={() => setOpen(false)}
                     >
                       <span className="menu-index">{String(index + 1).padStart(2, "0")}</span>
-                      <span className="menu-tool-name">
+                      <span className="menu-tool-name tool-name">
                         <Bi en={tool.name.en} zh={tool.name.zh} />
                       </span>
                       {tool.tier === "pro" ? (

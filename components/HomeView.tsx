@@ -107,7 +107,7 @@ export function HomeView() {
                 <Link href={`/t/${tool.slug}`} className={`card tier-${tool.tier}`}>
                   <span className="card-index">{String(index).padStart(2, "0")}</span>
                   <span className="card-body">
-                    <h2>
+                    <h2 className="tool-name">
                       <Bi en={tool.name.en} zh={tool.name.zh} />
                     </h2>
                     <p>
