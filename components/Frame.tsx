@@ -153,7 +153,9 @@ export function Frame({ children }: { children: ReactNode }) {
                       </span>
                       {tool.tier === "pro" ? (
                         <span className="menu-tool-marks">
-                          <span className="badge pro">Pro</span>
+                          <span className="badge pro">
+                            <Tx id="filter.pro" />
+                          </span>
                           <span className="lock-mark">
                             <Tx id="lock" />
                           </span>

@@ -29,11 +29,24 @@ describe("catalog", () => {
   });
 });
 
+const SIMPLIFIED_ONLY =
+  "门关页专费设备开继软权输览请换题语锁这钥账证发许复错词计贴统标驼现读无几变减两颜压须组运结编显后并网载画长选种预温摄华亩顷码国时来对还说东车马鱼飞龙万与云仅们优伪会体个为过还经动样书贝见车鸟页风齐专业华从众产亿伞伟传伤伦伪余佣侧侨币师广庆应弃张录怀总恶户执扩扫扬护报担拥拦择挤挥损摆旧旷暂术杀杂条杰栋栏树样桥梦检楼荣欢欧壳汇汉汤沟沪泪油泽洁洒浅浆测济浓涂消涉涨液淀深混添渔渗渣湿滤滥滩灭灯灵灾点热烧烦照熊爱爷尔墙牍牵牺状犹狈独狭狮狱猎猪猫献环玛玮珑珠琼璃电畅疗疮疯疼病症痒痛刚钟铁银错镇镜闪闭问间队阳阴际陆陈险随隐隶难雏雾鸡驱驶驻验骑麦黄齐齿龟丝丢两丰临为丽举义乌乐乔习乡书买乱争于亏亚亲仆仇仑价众伙伟伤伫佣俭倾佥侠侣侦侧侨侬俨俩俪债倾偻伪伞伦伫体佣侠";
+
 describe("copy", () => {
   it("translates every English string", () => {
     for (const key of Object.keys(copy.en)) {
       assert.equal(typeof zh[key as keyof typeof zh], "string");
       assert.ok(zh[key as keyof typeof zh].length > 0);
+    }
+  });
+
+  it("keeps Chinese UI copy in Traditional Chinese", () => {
+    const ui = [
+      ...Object.values(zh),
+      ...tools.flatMap((tool) => [tool.name.zh, tool.blurb.zh]),
+    ].join("");
+    for (const char of SIMPLIFIED_ONLY) {
+      assert.equal(ui.includes(char), false, `simplified character ${char}`);
     }
   });
 });

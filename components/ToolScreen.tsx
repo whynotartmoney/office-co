@@ -84,7 +84,9 @@ export function ToolScreen({ slug }: { slug: string }) {
           <Bi en={tool.blurb.en} zh={tool.blurb.zh} />
         </p>
         {tool.tier === "pro" ? (
-          <span className="badge pro">Pro</span>
+          <span className="badge pro">
+            <Tx id="filter.pro" />
+          </span>
         ) : (
           <span className="badge">
             <Tx id="free" />
@@ -95,7 +97,9 @@ export function ToolScreen({ slug }: { slug: string }) {
         <Pending />
       ) : locked ? (
         <div className="lock-plate">
-          <span className="badge pro">Pro</span>
+          <span className="badge pro">
+            <Tx id="filter.pro" />
+          </span>
           <h2>
             <Tx id="locked.title" />
           </h2>

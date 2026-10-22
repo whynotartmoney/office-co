@@ -43,7 +43,7 @@ npm test
 npm run build
 ```
 
-The dev server runs at http://localhost:3000. Theme, language, and the last opened tool are stored in `localStorage`. The default theme is white. The theme control cycles white, light silver-gray, and black. The default language is English. Chinese body and interface text uses Noto Sans TC Regular. Chinese tool names use Noto Sans TC Bold. The office-co wordmark stays Dela Gothic One.
+The dev server runs at http://localhost:3000. Theme, language, and the last opened tool are stored in `localStorage`. The default theme is white with a light gray diagonal stripe. The cycle continues to light silver-gray, then black. The default language is English. The 中文 locale uses Traditional Chinese and the same fonts as English: Dela Gothic One for the wordmark and titles, Outfit for body and UI.
 
 ## Deploy
 

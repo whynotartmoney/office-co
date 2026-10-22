@@ -116,7 +116,9 @@ export function HomeView() {
                   </span>
                   <span className="card-meta">
                     {tool.tier === "pro" ? (
-                      <span className="badge pro">Pro</span>
+                      <span className="badge pro">
+                        <Tx id="filter.pro" />
+                      </span>
                     ) : (
                       <span className="badge">
                         <Tx id="free" />
