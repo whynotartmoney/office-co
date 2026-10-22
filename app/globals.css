@@ -567,3 +567,11 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
   * { scroll-behavior: auto !important; transition: none !important; }
 }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* zh titles for tools 1–18 only. Wordmark, body, and other chrome stay on Dela / Outfit. */
+html[lang="zh"] :is(.tool-name, .menu-tool-name) .zh {
+  font-family: var(--font-tc), "Noto Sans TC", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
